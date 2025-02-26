@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Design Studio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <video id="video-input" 
+               autoplay 
+               playsinline 
+               muted
+               controls="false"
+               style="display: block; opacity: 0.0001;"
+        ></video>
+        <canvas id="output-canvas"></canvas>
+    </div>
+    
+    <main class="content">
+        <nav>
+            <div class="logo">mesci.dev</div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="https://github.com/mesci">Github</a>
+                <a href="https://x.com/bondofsacrifice">X</a>
+                <a href="mailto:yusuf@mesci.dev">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <h1>Interactive Experience</h1>
+            <p class="subtitle">Wave your hands to interact with the background</p>
+            <div class="cta-container">
+                <button class="cta-button">Start Project</button>
+                <p class="camera-status">Enabling camera...</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Demo Project made with Claude 3.5 Sonnet thru Cursor — Hand Tracking with Three.js</p>
+        </footer>
+    </main>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html> 
