@@ -1,10 +1,10 @@
-import { Hands } from '@mediapipe/hands';
+import { Hands } from '@mediapipe/hands/hands';
 
 export class HandTracker {
     constructor() {
         this.hands = new Hands({
             locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/${file}`;
             }
         });
 
@@ -17,11 +17,16 @@ export class HandTracker {
 
         this.videoElement = document.getElementById('video-input');
         
-        // When the page loads, request camera permission
+        // Debug log ekleyelim
+        console.log('HandTracker initialized');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Protocol:', window.location.protocol);
+        
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            console.log('MediaDevices API available');
             this.requestCameraPermission();
         } else {
-            console.error('getUserMedia is not supported in this browser');
+            console.error('MediaDevices API not available');
         }
     }
 
