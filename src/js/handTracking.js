@@ -1,8 +1,25 @@
-import { Hands } from '@mediapipe/hands/hands';
-
 export class HandTracker {
     constructor() {
-        this.hands = new Hands({
+        // MediaPipe'ı global scope'tan yükleyelim
+        if (!window.Hands) {
+            // MediaPipe script'ini dinamik olarak yükle
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js';
+            script.async = true;
+            document.head.appendChild(script);
+            
+            script.onload = () => {
+                this.initializeHands();
+            };
+        } else {
+            this.initializeHands();
+        }
+
+        this.videoElement = document.getElementById('video-input');
+    }
+
+    initializeHands() {
+        this.hands = new window.Hands({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/${file}`;
             }
@@ -15,8 +32,6 @@ export class HandTracker {
             minTrackingConfidence: 0.5
         });
 
-        this.videoElement = document.getElementById('video-input');
-        
         // Debug log ekleyelim
         console.log('HandTracker initialized');
         console.log('User Agent:', navigator.userAgent);
